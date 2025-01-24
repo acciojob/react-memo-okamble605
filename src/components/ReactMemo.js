@@ -1,49 +1,18 @@
-
 import React from "react";
 
-// Memoizing task list to prevent unnecessary re-renders
-const TaskList = React.memo(({ tasks }) => {
-  console.log("Rendering Task List...");
+const ReactMemoComponent = React.memo(({ todos }) => {
+  console.log("Rendering Todo List...");
+
   return (
-    <ul>
-      {tasks.map((task, index) => (
-        <li key={index}>{task}</li>
-      ))}
-    </ul>
+    <div>
+      <h3>React.memo Example</h3>
+      <ul>
+        {todos.map((todo, index) => (
+          <li key={index}>{todo}</li>
+        ))}
+      </ul>
+    </div>
   );
 });
 
-const ReactMemoDemo = ({ tasks }) => {
-  return (
-    <div className="react-memo">
-      <h2>Task List</h2>
-      <TaskList tasks={tasks} />
-    </div>
-  );
-};
-
-export default ReactMemoDemo;
-import React from "react";
-
-// Memoizing task list to prevent unnecessary re-renders
-const TaskList = React.memo(({ tasks }) => {
-  console.log("Rendering Task List...");
-  return (
-    <ul>
-      {tasks.map((task, index) => (
-        <li key={index}>{task}</li>
-      ))}
-    </ul>
-  );
-});
-
-const ReactMemoDemo = ({ tasks }) => {
-  return (
-    <div className="react-memo">
-      <h2>Task List</h2>
-      <TaskList tasks={tasks} />
-    </div>
-  );
-};
-
-export default ReactMemoDemo;
+export default ReactMemoComponent;
