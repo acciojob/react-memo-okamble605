@@ -1,19 +1,20 @@
 import React, { useMemo } from "react";
 
-const UseMemoDemo = ({ tasks }) => {
-  // Expensive function that calculates the longest task
-  const longestTask = useMemo(() => {
-    console.log("Computing longest task...");
-    return tasks.reduce((longest, task) =>
-      task.length > longest.length ? task : longest, "");
-  }, [tasks]);
+const UseMemoComponent = ({ todos }) => {
+  // Simulate an expensive calculation
+  const longRunningCalculation = (num) => {
+    console.log("Running expensive calculation...");
+    return num * 10;
+  };
+
+  const computedValue = useMemo(() => longRunningCalculation(todos.length), [todos]);
 
   return (
-    <div className="use-memo">
-      <h2>Longest Task:</h2>
-      <p>{longestTask || "No tasks yet"}</p>
+    <div>
+      <h3>UseMemo Example</h3>
+      <p>Computed Value (Todos * 10): {computedValue}</p>
     </div>
   );
 };
 
-export default UseMemoDemo;
+export default UseMemoComponent;
