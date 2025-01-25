@@ -33,8 +33,8 @@ const App = () => {
       <button onClick={addTodo}>Add Todo</button>
       <hr style={{ margin: "5px 0", border: "1px solid black" }} />
 
-      <p>Count: {count}</p>
-      <button onClick={increment}>+</button>
+      <p>Count: {count}<button onClick={increment}>+</button></p>
+      
       <ExpensiveCalculation count={count} />
       <hr style={{ margin: "5px 0", border: "1px solid black" }} />
       <hr style={{ margin: "5px 0", border: "1px solid black" }} />
