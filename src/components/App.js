@@ -1,53 +1,40 @@
 import React, { useState, useMemo } from "react";
-import UseMemoComponent from "./components/UseMemo";
-import ReactMemoComponent from "./components/ReactMemo";
+import ExpensiveCalculation from "./ExpensiveCalculation";
+import SkillList from "./SkillList";
 
 const App = () => {
-  const [todos, setTodos] = useState([]);
-  const [counter, setCounter] = useState(0);
-  const [inputValue, setInputValue] = useState("");
+  const [todos, setTodos] = useState(["New Todo"]);
+  const [count, setCount] = useState(0);
+  const [skill, setSkill] = useState("");
+  const [skills, setSkills] = useState(["HTML", "CSS", "JavaScript", "React"]);
 
   const addTodo = () => {
-    setTodos([...todos, "New todo"]);
+    setTodos([...todos, "New Todo"]);
   };
 
-  const addCustomTodo = () => {
-    if (inputValue.length > 5) {
-      setTodos([...todos, inputValue]);
-      setInputValue("");
-    } else {
-      alert("Task must be more than 5 characters");
+  const increment = () => {
+    setCount(count + 1);
+  };
+
+  const addSkill = () => {
+    if (skill) {
+      setSkills([...skills, skill]);
+      setSkill("");
     }
   };
 
-  const incrementCounter = () => {
-    setCounter(counter + 1);
-  };
-
-  // Using useMemo to memoize the todo count
-  const todoCount = useMemo(() => {
-    console.log("Recalculating todo count...");
-    return todos.length;
-  }, [todos]);
-
   return (
-    <div className="container">
-      <h2>React Memo Assignment</h2>
+    <div>
+      <h1>React.useMemo</h1>
+      <h2>My todos</h2>
+      {todos.map((todo, index) => (
+        <p key={index}>{todo}</p>
+      ))}
       <button onClick={addTodo}>Add Todo</button>
-      <button onClick={incrementCounter}>Increment Counter</button>
-      <p>Counter: {counter}</p>
-
-      <input
-        type="text"
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-        placeholder="Enter a custom task"
-      />
-      <button onClick={addCustomTodo}>Submit</button>
-
-      <p>Total Todos: {todoCount}</p>
-      <UseMemoComponent todos={todos} />
-      <ReactMemoComponent todos={todos} />
+      <p>Count: {count}</p>
+      <button onClick={increment}>Increment</button>
+      <ExpensiveCalculation count={count} />
+      <SkillList skills={skills} addSkill={addSkill} skill={skill} setSkill={setSkill} />
     </div>
   );
 };
