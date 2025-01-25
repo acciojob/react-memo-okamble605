@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from "react";
-import ExpensiveCalculation from "./ExpensiveCalculation";
-import SkillList from "./SkillList";
+import ExpensiveCalculation from "./ReactMemo";
+import SkillList from "./UseMemo";
 
 const App = () => {
   const [todos, setTodos] = useState(["New Todo"]);
