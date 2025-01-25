@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from "react";
-import ExpensiveCalculation from "./compoenents/ExpensiveCalculation";
-import SkillList from "./components/SkillList";
+import ExpensiveCalculation from "./ExpensiveCalculation";
+import SkillList from "./SkillList";
 
 const App = () => {
   const [todos, setTodos] = useState(["New Todo"]);
@@ -31,9 +31,14 @@ const App = () => {
         <p key={index}>{todo}</p>
       ))}
       <button onClick={addTodo}>Add Todo</button>
+      <hr style={{ margin: "5px 0", border: "1px solid black" }} />
+
       <p>Count: {count}</p>
-      <button onClick={increment}>Increment</button>
+      <button onClick={increment}>+</button>
       <ExpensiveCalculation count={count} />
+      <hr style={{ margin: "5px 0", border: "1px solid black" }} />
+      <hr style={{ margin: "5px 0", border: "1px solid black" }} />
+
       <SkillList skills={skills} addSkill={addSkill} skill={skill} setSkill={setSkill} />
     </div>
   );
